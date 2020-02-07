@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>Synthèse des outils logiciels de l'année</title>
+
+  <meta name="description" content="coursIGAST2020">
+  <meta name="author" content="paul" >
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="custom_css/openmole.css" id="theme">
+  <link rel="stylesheet" href="custom_css/theme.css" id="theme">
+
+  <!-- For syntax highlighting -->
+  <link rel="stylesheet" href="js/reveal.js/lib/css/zenburn.css">
+
+
+  <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+  <script>
+  if( window.location.search.match( /print-pdf/gi ) ) {
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = 'css/print/pdf.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  }
+  </script>
+
+  <!--        remove default borders around images-->
+  <style>
+  .reveal section img {
+    background:none;
+    border:none;
+    box-shadow:none;
+  }
+
+  #logos {
+    width: 960px; // Change this according to the width you want.
+    height: 500px; // Change this as well
+    margin: 0 auto 0 auto;
+    text-align: center; // Will center the images contained in the div
+  }
+  .MathJax_Display {
+  text-align: left !important;
+  display: inline !important;
+}
+  </style>
+
+
+</style>
+
+</head>
+
+<body>
+
+  <div class="reveal">
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+
+
+      <section data-transition="fade-out">
+
+<h1>Synthèse des outils logiciels </h1>
+<h2>vu au cours de l'année </h2>
+<h3>Master IGAST 2019-2020 </h3>
+
+<br> Février 2020
+<br>
+<br>
+<small>PC</small>
+<br>
+</section>
+        
+
+
+
+
+<section data-transition="fade-out">
+
+<h2>Contenu de ce cours</h2>
+<br><br>
+<p align="left">
+
+Bilan des outils<br>
+Adéquation outil $\leftrightarrow$ tâche <br>
+Approche réflexive : comment juger les outils logiciels ? 
+</section>
+
+
+<section data-transition="fade-out">
+<h2> Évaluer les outils</h2>
+<br><br>
+<p align="left">
+  <small>
+&#9888; Pas les langages, les services, ni les paradigmes/méthodes
+<br> e.g. :
+ <ul>
+  <li>«Python c'est mieux que Java à cause des notebooks Jupyter»</li>
+  <li>«Julia c'est mieux que R à cause de l'exécution parallèle»</li>
+  <li>«Bon courage pour faire une BD de plus de 10K tuples avec ACCESS ^_^»</li>
+  </ul>
+</small>
+</p>
+</section>
+
+
+<section data-transition="fade-out">
+<h3>Exemple de benchmark</h3>
+    <img src="img/bench.png", style="float: center; width: 100%">
+<small>Pas utile pour nous ici</small> 
+</section>
+
+
+
+
+<section data-transition="fade-out">
+<h3>Quelques sources de biais</h3>
+<br><br>
+<div style="font-size: 80%">
+<ul>
+  <li>Expérience du développeur</li>
+  <li>Degré d'optimisation</li>
+  <li>Adéquation Logiciel/Matériel: e.g. Machine Lisp, CUDA sur GPU</li>
+  <li>Configuration des applications: e.g. allocation mémoire de pgsql</li>
+  <li>Systèmes d'exploitations concernés: Server Linux vs. Desktop Windows</li>
+  <li>Contexte d'exécution: geoportail.ign.fr vs.  rendu projet M2 </li>
+  <li>Type de données, structures de données disponibles nativement:  e.g. index </li>
+</ul>
+</div>
+</section>
+
+
+
+<section data-transition="fade-out">
+Les critères adéquats pour vous ? 
+<img src="img/penseur_rodin.jpg", style="float: center; width: 50%">
+
+
+</section>
+
+
+<section data-transition="fade-out">
+<h2> Liste à la Prévert</h2>
+<ul>
+  <li>Éditeurs : Spyder, PyScripter</li>
+  <li>Langages : Python, PL/pgSQL, R</li>
+  <li>Visualisation de données : R, Matplotlib</li>
+  <li>SIG "desktop": Qgis, ArcGIS,  </li>
+  <li>Suite/librairie SIG : API QGis, pgrouting </li>
+  <li>SGBD SIG : postgis,  </li>
+  <li>librairies statistiques : factomineR, clustgeo, sf </li>
+  <li>GUI : Qt (dans Qgis), QT Designer </li>
+</ul>
+</section>
+
+
+
+
+
+
+
+
+<section data-transition="fade-out">
+<h2>Les critères retenus <small> <span style="font-size: 70%;">(par moi)(ils sont discutables)</span></small></h2>
+<br>
+<p align="left", style="width: 100%">
+<ul>
+  <li>Correction & complétude</li>  
+  <li>Facilité d'utilisation & courbe d'apprentissage</li> 
+  <li>Qualité de la documentation & clarté des messages d'erreur</li>
+  <li>Abondance des exemples/tutoriels/stackOverflow & coolitude de la communauté </li>
+  <li>Prix</li>
+  <li>Employabilité</li>
+  <li>Propriétaire / Libre </li>
+</ul>
+</p>
+</section>
+
+
+
+<section data-transition="fade-out">
+<h2> Pour vos successeurs </h2>
+
+    <img src="img/finger_sixtine.jpg", style="float: center; width: 100%">
+</section>
+
+
+
+<section data-transition="fade-out">
+  <h2>Pour afficher des données</h2>
+
+
+<h4>Spatiales (cartographie, webmapping)</h4>
+
+<h4>Non Spatiales (graphiques)</h4>  
+</section>
+
+
+<section data-transition="fade-out">
+<h2>Pour importer des données </h2>
+ (stream de serveurs, API de données , shapefile, csv)
+</section>
+
+<section data-transition="fade-out">
+  <h2> Pour transformer des données </h2>
+
+(Conversion de formats mais aussi projections)
+
+</section>
+
+<section data-transition="fade-out">
+<h2>Pour calculer, modifier , enrichir, mesurer, bidouiller des données</h2>
+</section>
+
+
+<section data-transition="fade-out" >
+  Les
+</section>
+
+
+<section data-transition="fade-out">
+<h1>Synthèse de tout ça </h1>
+
+Comment synthétiser, agréger tout ces éléments?
+<br>
+<br>
+
+Fiche synoptique, grille d'analyse ? 
+
+
+<small>Ce rapide aperçu démontre invinciblement que toutes les grandes acquisitions de l'industrie et de l'intelligence se sont faites avec une excessive lenteur et par des agrégations inaperçues, absolument comme procède la Nature. Pour arriver à leur perfection, l'écriture, le langage peut-être !... ont eu les mêmes tâtonnements que la typographie et la papeterie. <br>
+<p align="right" >Honoré de Blazac<i>Les illusions perdues</i></p> </small>
+
+</section>
+
+
+
+
+<section data-transition="fade-out">
+  <h2>Pour la télédec' :  Importer/Exporter l'information</h2>
+</section>
+
+
+<section data-transition="fade-out">
+  Pour la télédec' :  Transformer l'information
+</section>
+
+
+
+<section data-transition="fade-out">
+  <h2>Pour la télédec' :  Calculer, modifier, enrichir, bidouiller les données</h2>
+</section>
+
+
+<section data-transition="fade-out">
+</section>
+
+    </div>
+
+      
+      
+    </div>
+    <script src="js/reveal.js/lib/js/head.min.js"></script>
+    <script src="js/reveal.js-min/js/reveal.min.js"></script>
+
+    <script>
+
+
+
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+      transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+      slideNumber: true,
+
+      // Optional libraries used to extend on reveal.js
+      dependencies: [
+        {src: 'js/reveal.js/lib/js/classList.js', condition: function() {
+          return !document.body.classList;
+        }},
+        { src: 'js/reveal.js/plugin/math/math.js', async: true },
+        {src: 'js/reveal.js/plugin/markdown/marked.js', condition: function() {
+          return !!document.querySelector('[data-markdown]');
+        }},
+        {src: 'js/reveal.js/plugin/markdown/markdown.js', condition: function() {
+          return !!document.querySelector('[data-markdown]');
+        }},
+        {src: 'js/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() {
+          hljs.initHighlightingOnLoad();
+        }},
+        {src: 'js/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() {
+          return !!document.body.classList;
+        }},
+        {src: 'js/reveal.js/plugin/notes/notes.js', async: true, condition: function() {
+          return !!document.body.classList;
+        }}
+      ]
+    });
+
+
+    </script>
+
+  </body>
+  </html>
