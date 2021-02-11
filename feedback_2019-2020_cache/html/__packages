@@ -1,0 +1,14 @@
+base
+RColorBrewer
+wordcloud
+stringr
+dplyr
+tidyverse
+ggplot2
+tibble
+tidyr
+readr
+purrr
+forcats
+knitr
+gridExtra
