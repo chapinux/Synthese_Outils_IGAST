@@ -198,7 +198,7 @@ Je m'attendais à plus d'outils OGR/GDAL et les scripts outils pour alimenter Po
 
 ## Meilleurs outils pour transformer les données spatiales
 
-Transformer ici signifie : changer de format, de rojection, ou de nature (par exemple vectoriser des rasters ou rasteriser des données vecteur).
+Transformer ici signifie : changer de format, de rojection, ou de nature (par exemple vectoriser des rasters ou rasteriser des données vecteur)^.
 
 
 ```{r cloud5,cache=TRUE,echo=FALSE,message=FALSE,warning=FALSE,fig.show="hold",out.width="50%"}
