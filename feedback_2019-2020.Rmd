@@ -2,16 +2,25 @@
 title: " Synthèses des outils logiciels "
 author: "pc"
 date: "M2 IGAST 2020-2021"
-output: html_document
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    theme: lumen
+    highlight: kate
+    number_sections: yes
+    number_subsections: yes
 self_contained: true
 ---
 
 
-Dans la séance de synthèse,les 19 étudiants ont répondu à diverses questions ouvertes dont voici les réponses,illustrées sous la forme de nuages de mots quand c'est possible. 
+Dans la séance de synthèse, 19 étudiant.e.s ont répondu à diverses questions ouvertes sur la plateforme Wooclap dont voici les réponses,illustrées sous la forme de nuages de mots quand c'est possible. 
 
 
 
 # Liste des outils 
+
+Je demandais de lister tous les outils qu'ils avaient utilisé cette année :
 
 
 ```{r cloud1, echo=FALSE, fig.height=6, fig.show="hold", message=FALSE, warning=FALSE, out.width="50%"}
@@ -22,7 +31,7 @@ library(knitr)
 library(gridExtra)
 library(grid)
 
-rawTools <- "R ,QGIS ,SNAP ,R ,QGIS ,PostGIS ,SNAP ,Octave ,QGIS ,PostGIS ,python ,ENVI ,Excel ,Matlab ,LaTeX ,Git ,SNAP ,RStudio ,Spyder ,pgAdmin ,ENVI ,SNAP ,QGIS ,Excel ,QGIS ,ENVI ,PostgreSQL ,SNAP ,Protégé,QGIS ,CloudCompare ,SNAP ,ENVI ,RStudio ,Spyder ,pgAdmin ,Octave ,Protégé ,ENVI ,SNAP ,QGIS ,OTB ,R ,QGIS ,python ,OTB ,R ,CloudCompare ,pgAdmin, PostGIS ,SNAP ,Web  ,QGIS ,PostgreSQL ,SNAP,QGIS ,pgAdmin ,Excel ,QGIS,R,ENVI,pgAdmin,Matlab,Protégé ,SNAP, web"
+rawTools <- "R ,QGIS ,SNAP ,R ,QGIS ,PostGIS ,SNAP ,Octave ,QGIS ,PostGIS ,python ,ENVI ,Excel ,Matlab ,LaTeX ,Git ,SNAP ,RStudio ,Spyder ,pgAdmin ,ENVI ,SNAP ,QGIS ,Excel ,QGIS ,ENVI ,PostgreSQL ,SNAP ,Protégé,QGIS ,CloudCompare ,SNAP ,ENVI ,RStudio ,Spyder ,pgAdmin ,Octave ,Protégé ,ENVI ,SNAP ,QGIS ,OTB ,R ,QGIS ,python ,OTB ,R ,CloudCompare ,pgAdmin, PostGIS ,SNAP ,web  ,QGIS ,PostgreSQL ,SNAP,QGIS ,pgAdmin ,Excel ,QGIS,R,ENVI,pgAdmin,Matlab,Protégé ,SNAP, web"
 
 
 vecTools <- rawTools  %>%  str_remove_all(" ") %>% str_split(",") %>%  unlist()
@@ -39,9 +48,9 @@ wordcloud(words = freqTools_df$outil,freq = freqTools_df$mentions,min.freq = 1,
 
 
 
-Réponse inutile : "web" 
+Réponse inattendue : "web" 
 
-Matlab etst utilisé en aprallèle d'Octave, sa version opensource très similaire, pour ceux qui n'ont pas de licence ou qui n'ont pas pu venir à l'ENSG.
+Matlab est utilisé en parallèle d'Octave, sa version opensource très similaire, pour ceux qui n'ont pas de licence ou qui n'ont pas pu venir à l'ENSG.
 
 Outils que je ne connaissais pas : 
 
@@ -53,10 +62,11 @@ Outils que je ne connaissais pas :
 
 
 
-## Interprétation
+## Interprétation perso 
 
- Les étudiants distinguent le langage de programmation de l'IDE utilisé pour développer : R et RStudio, python et Spyder. Aucun n'a mentionné d'outil bureautique de "rendu" (traitement de texte, diaporama), à l'exception de LaTeX.
+ Les étudiants distinguent le langage de programmation de l'IDE utilisé pour développer : R et RStudio, python et Spyder. Aucun n'a mentionné d'outil bureautique de "rendu" (traitement de texte, diaporama), à l'exception de LaTeX, mentionné une fois.
  On pourrait s'attendre à ce que tous mentionnent chaque outil, ce qui est loin d'être le cas. 
+ Je m'attendais à voir apparaître python beaucoup plus souvent, de même que certains services ou sites  web, du genre OpenStreetMap. 
 
 
 
@@ -65,11 +75,11 @@ Outils que je ne connaissais pas :
 Comptage des critères importants aux yeux des étudiants concernant les outils. J'ai regroupé les critères similaires sous la même étiquette. 
 Un.e étudiant.e pouvait donner plusieurs critères.
 
-```{r cloud2,cache=TRUE,echo=FALSE,message=FALSE,warning=FALSE,fig.show="hold",out.width="50%"}
+```{r cloud2, echo=FALSE, fig.height=8, fig.show="hold", message=FALSE, warning=FALSE, cache=TRUE, out.width="50%"}
 raw <- "Facilité de diffusion,adapté la puissance de traitement,Robustesse,help,documentation,tutorial d'utilisation,Bien Documenté,prérequis en performance,Capacité machine disponible,rapide (pour la visualisation de raster/vecteur),Open source,facilité d'utilisation,Facilité d'installation sur une machine quelconque,Open source,utilisation de l'outil dans le milieu pro,la quantité d'extension,Documentation détaillée,Intuitif,possibilité d'y ajouter des extensions,open source,Interface,open source,stabilité-performance-rapidité-répondreAuBesoin-,Robuste,interface graphique,diversité des traitements possibles,Facile,Rapide,accessibilité,Performance (nombre de tâches par secondes),Sa simplicité,Intuitivité,Sa documentation,une bonne doc',Rapidité,interface graphique intuitive,Interface design"
 
 
-rawCrits <- "Facilité de diffusion,Frugalité,Robustesse,Qualité de la documentation,Qualité de la documentation,tutorial d'utilisation,Qualité de la documentation,Frugalité,Frugalité,Rapidité,Open source,Facilité d'utilisation,Facilité d'installation,Open source,Utilisation dans le milieu pro,quantité d'extensions,Qualité de la documentation,Intuitivité,Extensibilité,Open source,Qualité de l'interface,Open source,Stabilité,Rapidité,Répondre au besoin,Robustesse,Qualité de l'interface,Polyvalence,Facilité d'utilisation,Rapidité,Accessibilité,Rapidité,Simplicité,Intuitivité,Qualité de la documentation,Qualité de la documentation,Rapidité,Qualité de l'interface,Qualité de l'interface"
+rawCrits <- "Facilité de diffusion,Frugalité,Robustesse,Documentation,Documentation,tutorial d'utilisation,Documentation,Frugalité,Frugalité,Rapidité,Open source,Facilité d'utilisation,Facilité d'installation,Open source,Utilisation dans le milieu pro,quantité d'extensions,Documentation,Intuitivité,Extensibilité,Open source,Qualité de l'interface,Open source,Stabilité,Rapidité,Répondre au besoin,Robustesse,Qualité de l'interface,Polyvalence,Facilité d'utilisation,Rapidité,Accessibilité,Rapidité,Simplicité,Intuitivité,Documentation,Documentation,Rapidité,Qualité de l'interface,Qualité de l'interface"
 
 
 vecCrits <- rawCrits  %>%  str_split(",") %>%  unlist()
@@ -90,7 +100,7 @@ wordcloud(words = freqCrits_df$outil,freq = freqCrits_df$mentions,min.freq = 1,
 
 
 
-## Interprétation
+## Interprétation perso
     
  La qualité de la documentation est logiquement placée en premier. Beaucoup d'attention est portée à la performance des outils, au sens de la **rapidité** d'éxécution des traitements. La frugalité est aussi un critère important à laquelle il faut relier la **stabilité**, ce qui reflête l'inégalité de leur équipement et les plantages nombreux que certains rencontrent.
 Également , le design , l'esthétique et l'intuitivité de la GUI des outils est un critère (trop) important, qui domine les autres qualités d'un outil. Il faut relier ce critère aux critères de facilité et d'intuitivité, qui sont médiés par l'interface dans ce cas. 
@@ -103,7 +113,7 @@ Pour comprendre l'écrasante préférence pour les outils avec une belle GUI, j'
 
 Voici les réponses : 
 
-### en faveur de la GUI
+## en faveur de la GUI
 
  - _Sur une interface spyder par exemple,tout est bien pensé : script python à gauche,console à droite,liste de variable actuelles,documentation librairies,plot..._
  - _facile à manipuler_
@@ -121,19 +131,19 @@ Voici les réponses :
  - _options discernables_
  - _intuitif_
 
-### Neutre
+## Neutre
 
-- _Pour ma part je n'ai pas de préférance chacune on leurs avantages_
+- _Pour ma part je n'ai pas de préférence ,les deux  ont leurs avantages_
 
-### En défaveur
+## En défaveur
 
 - _Désavantage : la GUI est moins automatisable_
 
-## Interprétation 
+## Interprétation perso
 
-La GUI remporte une large adhésion. Je crois que c'est parce qu'en dehors du trio "Qgis-postgis-python", les outils sont "découverts", c'est-à-dire abordés superficiellement et en peu de temps, or pour avoir un aperçu des fonctionnalités d'un outil, une GUI fait mieux l'affaire.
+La GUI remporte une large adhésion. Je crois que c'est parce qu'en dehors du trio "Qgis-postgis-python", les outils sont "découverts", c'est-à-dire abordés pour la première fois et en peu de temps, or pour avoir un aperçu des fonctionnalités d'un outil, une GUI fait mieux l'affaire.
 
-Les étudiant.e.s semblent friands d'interfaces ergonomiques et esthétiques, pour pouvoir cliquer un peu partout et voir ce que ça fait. 
+Les étudiant.e.s semblent friand.e.s d'interfaces ergonomiques et esthétiques, pour pouvoir cliquer un peu partout et voir ce que ça fait. 
 Il est vrai que ça évite de lire la documentation, ce qu'ils n'ont sans doute pas le temps de faire.
 Peut être qu'ils.elles n'ont pas assez eu à faire de traitements massifs et répétitifs pour se rendre compte de la nécessité d'automatiser. J'espère qu'ils en sont au moins convaincus.
 
@@ -142,7 +152,7 @@ Peut être qu'ils.elles n'ont pas assez eu à faire de traitements massifs et r�
 # Adéquation outils-tâches
 
 Les tâches que j'ai proposées sont forcément générales et abstraites, pour avoir plusieurs candidats.
-Je demandais une selection non ordonnée parmi les outils à disposition.
+Je demandais une sélection non ordonnée parmi les outils à disposition.
 
 
 
@@ -194,11 +204,11 @@ wordcloud(words = freqimport_df$outil,freq = freqimport_df$mentions,min.freq = 1
 Python revient sous plusieurs formes  en cumulé il est à égalité avec QGIS, toujours en tête.
 Je m'attendais à plus d'outils OGR/GDAL et les scripts outils pour alimenter PostGIS, mais c'est certainement le rôle qu'endosse QGIS ici avec son gestionnaire DB.
 
-^
+
 
 ## Meilleurs outils pour transformer les données spatiales
 
-Transformer ici signifie : changer de format, de rojection, ou de nature (par exemple vectoriser des rasters ou rasteriser des données vecteur)^.
+Transformer ici signifie : changer de format, de projection, ou de nature (par exemple vectoriser des rasters ou rasteriser des données vecteur).
 
 
 ```{r cloud5,cache=TRUE,echo=FALSE,message=FALSE,warning=FALSE,fig.show="hold",out.width="50%"}
@@ -218,80 +228,85 @@ wordcloud(words = freqtransfo_df$outil,freq = freqtransfo_df$mentions,min.freq =
 
 
 
-pour le calcul mesure ,enrichissement : 
+## Meilleurs outils pour calculer, mesurer ,enrichir des données : 
 
 
 
-Postgis
-Gdal
-Qgis
-excel
-python
-pgsql
-Postgres,Qgis,R,Python
-ArcGIS
-Numpy
-QGIS/Python/R/PostGresSQL
-Python
-r
-python
-Excel
-Excel
-PostGIS
-Python
-QGIS
-PyQGIS
-Fonctions plpgSQL
+```{r cloud6,cache=TRUE,echo=FALSE,message=FALSE,warning=FALSE,fig.show="hold",out.width="50%"}
+enrichraw <-  c("PostGIS/pgsql", "GDAL","QGIS","Excel","python","PostGIS/pgsql","PostGIS/pgsql","QGIS","R","python","ArcGIS","numpy","QGIS","python","R","PostGIS/pgsql","python","R","python","Excel","Excel","PostGIS/pgsql","python","QGIS","pyQGIS","Fonctions pl/sql")
+
+freqenrich  <-  enrichraw %>%  table(deparse.level = 0)
+freqenrich_df <- data.frame(outil = names(freqenrich),mentions=freqenrich[1:length(freqenrich)] %>%  as.vector())
+freqenrich_df <- arrange(freqenrich_df,-mentions) 
+
+grid.table(freqenrich_df,cols = colnames(freqenrich_df))
+par(mar=c(0,0,0,0))
+wordcloud(words = freqenrich_df$outil,freq = freqenrich_df$mentions,min.freq = 1,
+          random.order=FALSE, random.color = T,
+          colors=brewer.pal(8,"Dark2"),rot.per=0,fixed.asp = FALSE)
+```
 
 
----------------------------------------
-
-
-Exporte et mise à disposition des données
-
-Webhost
-Hébergeur gratuit
-Geoserver
-Leaflet/OpenLayers
-Alwaysdata
-Alwaysdata pour héberger un site
-Pyhton : with open('nom_fichier',"w") as f
-WKT,Geojson
-Webmapping
-QgisToThreeJs
-Geoserver
-QGIS
-QgisToWeb
-qgis
-Arcpy
-
---------------------------------------------------
-
-Diagrammes/infographies
-Faire un fiche avec un tableau. Procéder par tâches.
-agrégation par tâches
-par tache
-grille d'analyse
-Par fiche c'est sans doute plus pratique
-Carte mentale
-
-
-
-------------------------------------------------------
-
-expression libre
+Il est difficile de savoir si les étudiant.e.s distinguent vraiment PostgreSQL de PostGIS, j'ai fusionné les deux.
 
 
 
 
-j'ai découvert de nouveaux logiciels et leurs utilisations tels que R ou ENVI /SAGA et je trouve ça vraiment bien car on apprend à être polyvalent. Néanmoins,je trouve que QGIS prend beaucoup de place,or il serait appréciable de pouvoir faire des TP ou projets sur la suite ArcGIS car il est également possible de faire de la programmation sous SIG,de la BDD,de l'analyse spatiale,IA ou encore de la télédétection.
 
 
-Bonne idée de faire un tel cours,permet de se rendre compte de tous les outils dont on dispose. Je pense que c'est une idée à garder pour les prochaines années.
+## Meilleurs outils pour exporter et mettre à disposition des données
 
-On ne manipule pas assez Python cette année
-Je pense qu'il aurait été plus pertinent d'utiliser Google Form pour avoir un feedback plus réaliste :
-Continuer d'utiliser Wooclap c'est vraiment bien pour le distanciel !
+```{r cloud7,cache=TRUE,echo=FALSE,message=FALSE,warning=FALSE,fig.show="hold",out.width="50%"}
+exportraw <-  c("Webhost","Hébergeur gratuit","Geoserver","Leaflet/OpenLayers","Alwaysdata","Alwaysdata","python : with open('nom_fichier',\"w\") as f","WKT","Geojson","Webmapping","QGISToThreeJs","Geoserver","QGIS","QGISToWeb","QGIS","Arcpy")
+
+freqexport  <-  exportraw %>%  table(deparse.level = 0)
+freqexport_df <- data.frame(outil = names(freqexport),mentions=freqexport[1:length(freqexport)] %>%  as.vector())
+freqexport_df <- arrange(freqexport_df,-mentions) 
+
+grid.table(freqexport_df,cols = colnames(freqexport_df))
+par(mar=c(0,0,0,0))
+wordcloud(words = freqexport_df$outil,freq = freqexport_df$mentions,min.freq = 1,
+          random.order=FALSE, random.color = T,
+          colors=brewer.pal(8,"Dark2"),rot.per=0,fixed.asp = FALSE)
+```
+
+- AlwaysData est un hebergeur gratuit que les étudiant.e.s  ont utilisé en cours. 
+
+
+Il y a encore des réponses qui me laissent penser que mes questions n'étaient pas claires où qu'elles n'ont pas été comprises. (WKT qui est un format, l'ouverture de fichier en python pour sauvegarder ???) 
+
+
+
+# Quelle forme vous paraît la plus adaptée pour représenter les réponses ? 
+
+
+- Diagrammes/infographies
+- Faire un fiche avec un tableau. Procéder par tâches.
+- agrégation par tâches
+- par tâche
+- grille d'analyse
+- Par fiche c'est sans doute plus pratique
+- Carte mentale
+
+
+
+
+
+# Expression libre des étudiant.e.s
+
+retranscrites telles qu'elles, je souligne les passages qui me semblent importants
+
+
+> j'ai découvert de nouveaux logiciels et leurs utilisations tels que R ou ENVI /SAGA et je trouve ça vraiment bien car on apprend à être **polyvalent**. Néanmoins,je trouve que **QGIS prend beaucoup de place**, or il serait appréciable de pouvoir faire des TP ou projets sur la suite **ArcGIS** car il est également possible de faire de la **programmation sous SIG**,de la **BDD**, de l'**analyse spatiale**, **IA** ou encore de la **télédétection**.
+
+
+> Bonne idée de faire un tel cours, permet de se rendre compte de tous les outils dont on dispose. Je pense que c'est une idée à garder pour les prochaines années.
+
+> On ne manipule **pas assez Python** cette année
+
+>Je pense qu'il aurait été plus pertinent d'utiliser **Google Form** pour avoir un feedback plus réaliste
+
+>Continuer d'utiliser **Wooclap** c'est vraiment bien pour le distanciel !
 
 
 
