@@ -1,10 +1,10 @@
 ---
 title: " Synthèses des outils logiciels "
-author: "pc"
 date: "M2 IGAST 2021-2022"
 output: 
   html_document: 
     toc: yes
+    toc_float: true
     theme: lumen
     highlight: kate
     number_sections: yes
@@ -97,19 +97,31 @@ wordcloud(words = freqCrits_df$critere,freq = freqCrits_df$mentions,min.freq = 1
 
 ## Retour des élèves (verbatim)
 
+
+<em>
+
 «Documentation  : certains outils de la toolbpox QGIS ne sont pas documentés ni dans la GUI ni sur le site de QGIS»
 
 
 «Quelques docs ne sont pas en anglais par exemple quelques outils GRASS»
 
-Critère d'ergonomie : «il y a une GUI et donc la  possibilité d'explorer les fonctionnalités de l'outil de façon interactive à la souris»
+</em>
+
+
+Critère d'ergonomie : 
+
+*«il y a une GUI et donc la  possibilité d'explorer les fonctionnalités de l'outil de façon interactive à la souris»*
+
 Les outils les plus ergonomiques selon les étudiants : `QGIS` et `PgAdmin`
 
 
 
 Critère nouveau cette année  : "connaissance des profs":  
-
+<em>
 «c'est parce qu'un prof connaît l'outil XXX [j'ai oublié lequel] et a pu expliquer pourquoi c'était bien qu'on a pu sauter le pas et s'y mettre»
+
+
+</em>
 
 
 ## Interprétation perso: 
@@ -189,7 +201,7 @@ En revanche, soit ma question est mal posée , soit ils ne comprennent pas ce qu
 Transformer ici signifie : changer de format, de projection, ou de nature (par exemple vectoriser des rasters ou rasteriser des données vecteur).
 
 
-```{r cloud5,cache=TRUE,echo=FALSE,message=FALSE,warning=FALSE, fig.width=10}
+```{r cloud5,cache=TRUE,echo=FALSE,message=FALSE,warning=FALSE, fig.height=10, fig.width=10}
 transforaw <- "FME,PROJ,CIRCE,FME,QGIS,PROJ,FME,GDAL,postgres,PROJ,lignes de commande,postgres,PROJ,postgres,postgres,PROJ,postgres,python,PROJ,python,python,QGIS,python,QGIS,GDAL,QGIS,QGIS,OTB,QGIS,PROJ,QGIS,QGIS,PROJ,QGIS,CIRCE,QGIS,QGIS,QGIS"
   
   
@@ -224,7 +236,7 @@ Majorité écrasante de `QGIS` et `PROJ`, il semble que `gdal` ou `ogr2ogr` ne s
 
 
 
-```{r cloud6,cache=TRUE,echo=FALSE,message=FALSE,warning=FALSE, fig.width=10}
+```{r cloud6,cache=TRUE,echo=FALSE,message=FALSE,warning=FALSE, fig.height=10, fig.width=10}
 enrichraw <-  "R,OTB,OTB,snap,OTB,R,snap,ENVI,QGIS,QGIS,python,QGIS,postgis,QGIS,postgis,QGIS,postgres,python,QGIS,postgres,postgres,postgres,postgres,postgres,python,postgres,QGIS,postgis,postgres,QGIS,python,postgres,python,Excel,QGIS,QGIS,QGIS,QGIS,postgres,python,pgadmin,postgres,QGIS,QGIS"
 
 enrichraw <-  enrichraw %>%  str_split(",") %>% unlist()
@@ -252,7 +264,7 @@ Je suis surpris de voir `postgres` et `postgis` si haut : le confort du langage 
 
 ## Meilleurs outils pour **exporter** et mettre à disposition des données
 
-```{r cloud7,cache=TRUE,echo=FALSE,message=FALSE,warning=FALSE, fig.width=10}
+```{r cloud7,cache=TRUE,echo=FALSE,message=FALSE,warning=FALSE, fig.height=10, fig.width=10}
 exportraw <- "postgres,git,geoserver,OneDrive,QGIS,git,Google Colab,postgres,geoserver,postgres,git,geoserver,QGIS,QGIS,web,git,QGIS,QGIS,Leaflet,web,HTML,Geoserver,QGIS,Geoserver,HTML,QGIS,QGIS,git,QGIS,QGIS,python"
 
 exportraw <-  exportraw %>%  str_split(",") %>%  unlist()
@@ -277,131 +289,234 @@ Il y a encore des réponses qui me laissent penser que mes questions n'étaient 
 
 
 
-# Outils pour ecosystème SIG : **stocker, traiter et afficher/diffuser** de l'info spatiale
+## «Pile technique» SIG : **stocker, traiter et afficher/diffuser** de l'info spatiale, tout à la fois
 
-Les étudiant·e·s ont donné leur config/pile technique préférée 
-
-
-postgres - ArcGIS (ou QGIS)  - interface web ( html, openlayer)
-postgres - ArcGIS (QGIS si pas accessible) -  web
-postgreSQL - Geoserver - Leaflet - Angular
-Postgres / Postgis - Php - Javascript / Leaflet
-PostgresSQL - PostGIS - Php- Leaflet
-postgres - Visual code studio - leaflet 
-Postgres - Gdal - JS+PHP - Openlayers 
-PostgreSQL - PHP - Leaflet 
-PostgreSQL - Python - Dash
-postgres - qgis - leaflet
-Postgres + Postgis - Geoserver - Openlayers
-Postgres/Postgis - Geoserver - Leaflet
-PostgreSQL - R - shiny
-PostgreSQL - Php - Leaflet
+Question posée : coment faire cohabiter les différents outils précédents pour afficher, traiter et stocker des données ? 
 
 
-# Retour sur le cours "synthèses des outils" 
+Les étudiant·e·s ont donné leur config/pile technique préférée . 
+Comme on a trois éléments par proposition, je n'ai pas fait de nuage de mots, simplement mis les propositions recueillies, regroupées par  la colonne "webserver"
 
 
 
-il manque une tâche abstraite : traitement d'images (télédec)
 
-
-Modsalité d'association outils <-> critères
-
-Demander d'associer outils à la tâche est très intéressant, la démarche est à conserver. 
-Pour ce qui est des critères, peut être des tableaux de case à cocher ou de curseur à placer par tâches pour chaque outil
-Tableau synthétique outils x critères (voir si tel outil coche tel critère)
-formulaire à cases à cocher pour chaque outil
-proposer une grille avec fonctionnalité à cocher
-Par tâches (ensemble de tâches ex : traitement d'image)
-Questions par thème + grille outil / fonctionnalité
-Liste de tâches avec oui non nsp pour chaque outil
-Grille outils x fonctionnalité à cocher pour faire une synthèse
-
-
-
-# Exspression libre 
-
-Expression libre  :
-Pistes : outil nul a proscrire , outil génial à intégrer au cursus , adaptation de la pratique pédagogique à tel ou tel outil
+| SGBD | webserver  |frontend|
+|:-----:|:----:|:-----:|
+|postgres | ArcGIS (ou QGIS)  | interface web ( html, openlayer)|
+|postgres | ArcGIS (QGIS si pas accessible) |  web|
+|Postgres / Postgis | Php | Javascript / Leaflet|
+|postgres | QGIS | leaflet|
+|postgres | Visual code studio | leaflet |
+|Postgres | Gdal+JS+PHP | Openlayers |
+|PostgresSQL / PostGIS | PHP| Leaflet|
+|PostgreSQL | PHP | Leaflet |
+|PostgreSQL | PHP | Leaflet|
+|PostgreSQL | Python | Dash|
+|Postgres + Postgis | Geoserver | Openlayers|
+|Postgres/Postgis | Geoserver | Leaflet|
+|postgreSQL | Geoserver | Leaflet+ Angular|
+|PostgreSQL | R | shiny|
 
 
 
 
 
+**À noter**  : 
+
+- la dénomination de la "chose" (le serveur qui requête la BDD et présente les données aux frontend) à mettre entre les données et la page web n'était pas explicitement étiquetée "webserver" d'où certaines réponses incomplètes comme "web" , et la place flottante du javascript (ce qui se comprend, pour un langage "intermédiaire") .
+- plébiscite de postgres/postgis pour la partie BDD
+- Openlayers et leaflet se partagent la partie frontend (sauf une proposition: shiny, qui est la partie html cablée à un serveur web lancé par R )
 
 
-Plébiscite FME (scriptable éventuellement)
-
-model builder vu avec ArcGIS en ING 2 mais pas avec QGIS
 
 
-cas de python (prog GIS) pas vu ni shapely , panda , fiona
+# Retour sur le cours "synthèses des outils vu au cours de l'année " 
+
+
+
+<em>
+* il manque une tâche abstraite pour lister les outils: traitement d'images (télédec)  
+* Demander d'associer [les] outils à la tâche est très intéressant, la démarche est à conserver. 
+</em>
+
+## Associer tâches , outils et critères 
+
+
+Propositions des étudiants pour la forme que devrait prendre les questions et/ou les réponses
+
+<em>
+
+ - Pour ce qui est des critères, peut être des tableaux de case à cocher ou de curseur à placer par tâches pour chaque outil
+ 
+- Tableau synthétique outils x critères (voir si tel outil coche tel critère)
+
+- formulaire à cases à cocher pour chaque outil
+
+- proposer une grille avec fonctionnalité à cocher
+
+- Par [macro] tâches (ensemble de tâches ex : traitement d'image)
+
+- Questions par thème + grille outil / fonctionnalité
+
+- Liste de tâches avec [le triplet] (oui, non, nsp) pour chaque outil
+
+- Grille outils X fonctionnalité à cocher pour faire une synthèse 
+
+</em>
+
+La grille semble être le meilleur moyen de recueillir l'info en une seule fois, à suivre avec Wooclap pour saisir une telle matrice sans trop lutter avec la saisie 
+
+
+# Expression libre des étudiant·e·s
+
+Pistes que j'ai proposées:  un outil nul a proscrire, un outil génial à intégrer au cursus, une adaptation de la pratique pédagogique à tel ou tel outil
+
+Les titres des sous sections qui suivent sont de moi : 
+
+
+
+
+
+## model builder 
+
+**Model builder** vu avec ArcGIS en ING 2 mais pas avec QGIS
+
+[il faudrait ] Voir le model builder de QGIS
+
+
+
+## du Python  mais pas d'octave 
+
+<em>
+en python (prog SIG) on n'a pas vu shapely , panda , fiona
+
 problème d'isolement de ce cours par rapport aux autres : bcp de traitements pourraient être montrés / effectués en python , mais sont fait en pgsql
-valbale pour du spatiale et traitement d'images
+et c'est valable pour du spatial et le traitement d'images
 
 
-
-Manque de formation initiale en webmapping . Projets Imposés en ING2 sujets variables , compétences retenues variables
-
-
-Manque de pratique en R : 3h trop short
-
-
-manque de pratique sur la représentation "clean" (i.e. commercialisable ou semilogiquement correcte + choix esthétique adaptée) ~ cours de carto    
-
-
-
-pprendre à utiliser Linux et lignes de commande
-plus apprendre à utiliser les lignes de commande
-Voir le model builder de QGIS
-changement de pratique: des tutoriels en plus des tp
-octave est superflu et pourrait être remplacé par python que beaucoup d’élèves ne connaissent pas en début d'année.
-octave est superflu et pourrait être remplacé que beaucoup d’élèves ne connaissent pas en début d'année.
 Utilisation de python: nous n'avons pas utilisé le langage python en dehors des cours spécifiques. Cela a été proposé quelques fois pour des TP mais parfois écarté au profit de pgsql.
-Plus d'exemples de cas pratiques pour élargir compétences.
+
 proposer d'apprendre à utiliser linux
+
+
+
+**octave** est superflu et pourrait être remplacé par python que beaucoup d’élèves ne connaissent pas en début d'année.
+
 Utiliser Python en traitement d'images
-Faire du webmapping
-Virer l'emploi du temps excel de M.Frison
-outils à intégrer  : Arcgis
-Faire plus de R! Pour explorer plus en détail les fonctionnalités
-outils à intégrer : arcgis, programmation web, FME.
+
+
 Favoriser plutôt la programmation en Python  plutôt que l'utilisation d'Octave (actuellement par défaut) en traitement d'images
+
 Octave, inutile d'apprendre ce langage en traitement d'image, il vaut mieux apprendre en python car c'est beaucoup plus utilisé et en plus au départ certaines personnes d'IGAST ne sont pas très familier avec le code, ce qui peut entraîner une confusion des langages de programmation
+
 Changement de pratique pédagogique sur l'outil : Python
-Faire des groupes de niveaux pour les TP
-Webmapping  : Openlayers (pas fait en M1,), continuer Leaflet
+
 Virer Octave / Matlab et passer sur Python
-utiliser linux
-Découverte de FME
-Apprendre à représenter de la donnée de manière clean (bases de la filière Carthagéo par exemple)
-apprendre à utiliser Arcgis pro , Geoserver
-Outil à intégrer avec formation : FME
+
+
 Ne pas faire Octave (Matlab) et traitement d'image en même temps
-FME intéressant à intégrer (un TP)
-Cours sur ArcGIS
-Apprendre à utiliser ArcGis
+</em>
+
+
+## Webmapping 
+
+<em>
+Manque de formation initiale en webmapping. 
+
+les projets sont imposés en ING2 sur des sujets variables, ce qui fait que compétences retenues [par nous sont] variables
+
+</em>
+
+## R
+
+<em>
+Manque de pratique en R : 3h c'est trop court
+Faire plus de R! Pour explorer plus en détail les fonctionnalités
+</em>
+
+## Carto 
+
+<em>
+
+manque de pratique sur la représentation "clean" (i.e. commercialisable ou sémiologiquement correcte + choix esthétique adaptée)  des données 
+
+
+Apprendre à représenter de la donnée de manière clean (bases de la filière Carthagéo par exemple)
+
+</em>
+
+## Linux
+
+<em>
+
+apprendre à utiliser Linux et lignes de commande
+
+plus apprendre à utiliser les lignes de commande
+
+utiliser linux
+
+</em>
+
+## Pédagogie/organisation générale 
+
+<emm>
+
+changement de pratique: des tutoriels en plus des tp
+Plus d'exemples de cas pratiques pour élargir compétences.
+
+Attention ordre des cours : python(de base)  vient après le traitement d'image donc si python utilisé en traitement d'images ,ça va coincer
+
+Faire des groupes de niveaux pour les TP
+
+L'emploi du temps pamplemousse n'est pas à jour assez vite , il faut regarder le fichier sur le Teams de la promo, c'est contraignant
+
+
+</em>
+
+## Outils / Compétences à intégrer 
+
+<em>
+
+ - FME 
+
+- Faire du webmapping
+
+- outils à intégrer  : Arcgis
+
+- outils à intégrer : arcgis, programmation web, FME.
+
+- Webmapping  : Openlayers (pas fait en M1), continuer Leaflet
+
+- apprendre à utiliser Arcgis pro , Geoserver
+
+- Outil à intégrer avec formation : FME
+
+- FME intéressant à intégrer (un TP)
+
+- Cours sur ArcGIS
+
+- Apprendre à utiliser ArcGis
+
+</em>
 
 
 
-Attention  ordre des cours : python(de base)  vient après le traitement d'image donc si python utilisé en traitement d'images, ,ça va coincer
 
+# Le mot de la fin 
 
+Un·e étudiant·e resté·e à la fin de ce cours m'a dit : 
 
+<em>
+« La difficulté de ce master c'est l'hétérogénéité des provenances qui implique qu'on reprend les concepts les outils à la base et qu'on n'arrive pas suffisamment loin pour que ce soit vraiment pointu intéressant.
 
+par exemple : traitement d'image vu en ING2 avec python et en M2 IGAST , on refait des masques avec Octave ce qui est la base de la base , et on nous montre ce que font des fonctions de bases qu'on avait appelé de façon transparente en ING2
 
+Appréhension des nouveaux outils , ça fait un peu peur pour les Non-ENSG de la programmation et des mathématiques . 
 
-
- difficulté de ce master c'est l'hétérogénéité des provenances qui implique qu'on reprend les concepts les outils à la base et qu'on n'arrive pas suffismanet loin pour que ce soit vraiment pointu intéressant.
-
-Exemple : traitement d'image vu en ING2 avec python et en M2 IGAST , on refait des masques avec Octave ce qui est la base de la base , et on nous montre ce que font des fonctions de bases qu'on avait appellées de façon transparente en ING2
-
-
-Appréhension des nouveaux outils , ça fait un peu peur pour les Non-ENSG de la programmation et des mathématiques .
 Il y a un froid quand on apprend qu'on va le faire en python.
 
-" je suis étonné·e qu'il n'existe pas de mise a niveau python avant la rentrée , comme en PPMD  "
- 
+je suis étonné·e qu'il n'existe pas de mise a niveau python avant la rentrée , comme en PPMD  »
+ </em>
 
 
 
