@@ -1,0 +1,233 @@
+Quels sont les critères adéquats pour évaluer un outil selolon vous ? 
+
+Acces simple: outil en ligne, en logiciel, sur lequel on peut travailler à plusieurs
+Consommation de ressources informatiques
+Noms des outils explicites (pour importer les packages, creer les variables, ecrire les algorithmes etc)
+Modularité
+Capacité à effectuer plusieurs types de tâches différentes
+L'interopérabilité de l'outil avec d'autres outils
+adaptabilité à plusieurs environement (linux, Windows...)
+Disponibilité d'une documentation claire
+DOCUMENTÉ
+Langage utilisé
+documentation disponible
+pouvoir être dépanné quand il y a une erreur (forum ou aide)
+RAPIDE
+FACILE D'UTILISATION
+Résultats conformes aux attentes
+La communauté derrière l'outil
+Une documentation fournie et claire
+Facilité de prise en main / documentation fournie
+ERGONOMIE
+Interface intuitive
+les librairies disponibles
+intuitivité
+Diversité d'utilisation
+facilité de compréhension de l'outil
+OpenSource ou propriétaire
+Rapidité d'exécution
+la facilité de la prise en main
+
+
+AFFICHAGE DONNESS
+
+
+Plotly
+postgres
+Seaborn
+spatiales : QGIS / R / PostGIS / GeoPandas
+spatiales:
+QGIS
+2- Postgis
+Folium
+notepad++
+qgis
+Matplotlib
+dépend du format
+si pas spatiales: exploration du fichier en python et visualisation avec matplotlib
+3. R
+statistiques:
+1. R
+2. PostGIS
+Spatial : Qgis
+Non-spatial : Python (Matplotlib, Numpy, Pandas)
+Matplotlib
+Arcgis, Qgis, R
+1- Qgis
+2. matplotlib
+Excel
+si spatiales : carte qgis avec accent sur la symbologie
+1. QGIS
+GeoPandas
+QGIS
+
+IMPORT DE DONNEES
+
+visual studio code
+Pgadmin
+Via un flux de données sur le logiciel directement
+Telecharger depuis le site adequat
+géocodage
+Navigateur internet
+interroger API
+API REST
+script python
+console
+QGIS
+QGIS
+R
+pandas
+PgAdmin
+RapidMineR
+commandes postgres
+PostgreSQL
+pgadmin
+qgis
+Web scraping
+ftp
+Script (automatisation)
+clone it from Github
+Pgadmin
+Qgis
+Drag and drop
+csv
+POUR TRANSFORMER DES DONNEES
+Changement de type de données en python
+PgSQL
+Changement de crs: via qgis en exportant proprement
+postgres
+SQL
+circé
+Pour le format: en python avec package adapté (format1_to_format2) ou bien save(x) avec x la data
+PostgreSQL
+circé
+Postgis
+Lignes de commandes
+script python
+Python
+SQL
+python
+circe
+python
+Qgis
+Qgis
+gdal
+qgis
+Flux wms avec qgis
+Gdal
+GDAL
+R
+QGIS
+QGIS
+qgis
+gdal
+QGIS
+QGIS
+QGIS
+Gdal
+CALCULER ENRICHIR MESURER (inclus télédec)
+
+excel
+Gimp
+gimp
+Snap
+powerpoint
+Python
+Qgis sentinel
+otb
+Qgis sentinel
+Otb
+OTB
+OTB
+Qgis for Sentinel
+QGIS Sentinel
+python
+snap
+Zonal Stats
+Snap
+qgis-kit-sentinel
+OTB
+SNAP
+SNAP
+Excel
+notepad++
+Field Calculator
+Snap
+sql
+R
+paint
+sql
+PostGIS
+qgis
+postgis
+Python
+Postgis
+Qgis
+postgres
+postgres
+Pgrouting
+R
+python
+Qgis
+qgis
+Python
+PostGIS
+Postgis
+Geotraitements qgis
+python
+Python
+PostGIS
+QGIS
+QGIS
+Python
+qgis
+QGIS
+PostGIS
+EXPORTER RENDRE DISPO
+
+Google Drive
+wetransfer
+Disque dur
+Qgis
+ftp
+api
+site web
+cloud
+Zip drive
+qgis
+Dashboard arcgis
+GITHUB
+QGIS
+site web
+Github
+ligne de commandes
+OneDrive
+R
+QGIS
+arcgis
+python (matplotlib)
+openstreetmap
+formationTemp
+
+
+CHOABITATION / COMBO outils 
+SQlize
+docker
+posgres
+Qgis postgis
+R
+qgis - python
+MEAN
+Connexion bdd / qgis
+Python + Qgis + Postgres
+qgis - postgres
+Php
+Angular - Srping boot - Postgres - Maptoolbox
+Mamp
+qgis - postgis
+MAMP
+
+
+
+
+

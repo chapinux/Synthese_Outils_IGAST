@@ -1,0 +1,328 @@
+---
+title: " Synthèse des outils logiciels vus au cours de l'année"
+date: "M2 IGAST 2022-2023"
+output: 
+  html_document: 
+    toc: yes
+    toc_float: true
+theme: cayman
+highlight: kate
+number_sections: yes
+number_subsections: yes
+df_print: default
+self_contained: true
+editor_options: 
+  chunk_output_type: console
+---
+  
+  
+```{r, echo=F, message=FALSE, warning=FALSE}
+library(knitr)
+library(dplyr)
+opts_knit$set(global.par = TRUE)
+```
+
+Dans la séance de synthèse, la promotion IGAST 2022-2023 a répondu à diverses questions ouvertes sur la plateforme Wooclap dont voici les réponses, illustrées sous la forme de nuages de mots quand c'est possible. 
+
+
+
+
+
+
+## Les critères adéquats pour juger un outil
+
+Cette année j'ai commencé par les critères , voici les réponses obtenues à la question : "Quels sont selon vous les critères adéquats pour évaluer les outils ?". J'ai regroupé les critères similaires sous la même étiquette.  Un·e étudiant·e pouvait donner plusieurs critères.
+
+```{r cloud2, fig.height=12, echo=FALSE,message=FALSE, warning=FALSE}
+library(wordcloud)
+library(stringr)
+rawCrits <- "simplicité,multi-users,accessible en ligne,frugalité,noms des fonctions explicites ,modularité,polyvalence,interopérabilité avec d'autres outils,multi-plateformes,doc claire,documenté,utilisé (i.e. popularité),documenté,communauté,rapidité,facilité,résultats conformes aux attentes,communauté,documenté,doc claire,facilité,documenté,ergonomique,interface intuitive,librairies disponibles,interface intuitive,polyvalence,facilité,type de licence,rapidité,facilité"
+
+vecCrits <- rawCrits  %>%  str_split(",") %>%  unlist()
+freqCrits  <-  vecCrits %>%  table(deparse.level = 0)
+freqCrits_df <- data.frame(critere = names(freqCrits),mentions=freqCrits[1:length(freqCrits)] %>%  as.vector())
+freqCrits_df <- arrange(freqCrits_df,-mentions) 
+
+#grid.table(freqCrits_df,cols = colnames(freqCrits_df))
+knitr::kable(freqCrits_df,format = "html",table.attr = "style='width:40%;'")
+par(mar=c(0,0,0,0))
+wordcloud(words = freqCrits_df$critere,freq = freqCrits_df$mentions,min.freq = 1,
+          random.order=FALSE, random.color = T,
+          colors=brewer.pal(8,"Dark2"),rot.per=0,fixed.asp = FALSE)
+
+```
+
+
+## Meilleurs outils pour **afficher** des données 
+
+Les données peuvent être spatiales ou non.
+
+```{r cloud3, echo=FALSE, fig.height=12,  message=FALSE, warning=FALSE}
+
+displayraw <-  c("plotly,PostGIS,seaborn,QGIS,R,PostGIS,GeoPandas,QGIS,PostGIS,Folium,notepad++,QGIS,matplotlib,matplotlib,R,R,PostGIS,QGIS,Matplotlib,Matplotlib,Arcgis,QGIS,R,QGIS,matplotlib,Excel,QGIS,QGIS,GeoPandas,QGIS")
+
+
+ 
+displayraw <- displayraw  %>%  str_split(",") %>%  unlist()
+freqdispl  <-  displayraw %>%  table(deparse.level = 0)
+freqdispl_df <- data.frame(outil = names(freqdispl),mentions=freqdispl[1:length(freqdispl)] %>%  as.vector())
+freqdispl_df <- arrange(freqdispl_df,-mentions) 
+
+#grid.table(freqdispl_df,cols = colnames(freqdispl_df))
+knitr::kable(freqdispl_df,format = "html",table.attr = "style='width:40%;'")
+
+par(mar=c(0,0,0,0))
+wordcloud(words = freqdispl_df$outil,freq = freqdispl_df$mentions,min.freq = 1,
+          random.order=FALSE, random.color = T,
+          colors=brewer.pal(8,"Dark2"),rot.per=0,fixed.asp = FALSE)
+
+```
+
+
+(Pour ces réponses, j'ai amalgamé postgres et postgis) 
+
+Les outils en tête du classement sont des outils sont scriptables/automatisables, ce qui est plutôt bon signe.
+
+
+## Meilleurs outils pour **importer** des données spatiales ou non
+
+```{r cloud4, echo=FALSE, fig.height=12, fig.width=12, message=FALSE, warning=FALSE}
+importraw <-  "visual studio code,Pgadmin,API/flux,téléchargement,géocodage,Navigateur internet,API/flux,API/flux,python,terminal,QGIS,QGIS,R,pandas,Pgadmin,RapidMineR,postgreSQL,postgreSQL,Pgadmin,QGIS,webscraping,ftp,terminal,git clone,Pgadmin,QGIS,Drag and drop,CSV"
+
+importraw <-  importraw %>%  str_split(",") %>%  unlist()
+
+freqimport  <-  importraw %>%  table(deparse.level = 0)
+freqimport_df <- data.frame(outil = names(freqimport),mentions=freqimport[1:length(freqimport)] %>%  as.vector())
+freqimport_df <- arrange(freqimport_df,-mentions) 
+
+#grid.table(freqimport_df,cols = colnames(freqimport_df))
+knitr::kable(freqimport_df,format = "html",table.attr = "style='width:40%;'")
+
+par(mar=c(0,0,0,0))
+wordcloud(words = freqimport_df$outil,freq = freqimport_df$mentions,min.freq = 1,
+          random.order=FALSE, random.color = T,
+          colors=brewer.pal(8,"Dark2"),rot.per=0,fixed.asp = FALSE)
+```
+
+
+
+
+Plusieurs réponses montrent que la question a été mal comprise et/ou mal posée, ou que les étudiant·e·s sont dans les choux : `Navigateur Internet` , `Téléchargement` et `Drag and drop`. Sans doute l'aspect ludique de Wooclap et l'enthousiasme débordant durant les projets d 'analyse spatiale expliquent ces réponses lunaires ;-)
+
+
+
+
+
+
+## Meilleurs outils pour **transformer** les données spatiales
+
+Transformer ici signifie : changer de format, de projection, ou de nature (par exemple vectoriser des rasters ou rasteriser des données vecteur).
+
+
+```{r cloud5,cache=TRUE,echo=FALSE,message=FALSE,warning=FALSE, fig.height=12, fig.width=12}
+transforaw <- "Changement de type de données en python,Postgis,Changement de crs: via qgis en exportant proprement,Postgis,Postgis,circé,Pour le format: en python avec package adapté (format1_to_format2) ou bien save(x) avec x la data,Postgis,circé,Postgis,Lignes de commandes,python,python,SQL,python,circe,python,QGIS,QGIS,Gdal,QGIS,Flux wms avec QGIS,Gdal,Gdal,R,QGIS,QGIS,QGIS,Gdal,QGIS,QGIS,QGIS,Gdal"
+  
+  
+transforaw <-  transforaw %>%  str_split(",") %>%  unlist()
+  
+freqtransfo  <-  transforaw %>%  table(deparse.level = 0)
+freqtransfo_df <- data.frame(outil = names(freqtransfo),mentions=freqtransfo[1:length(freqtransfo)] %>%  as.vector())
+freqtransfo_df <- arrange(freqtransfo_df,-mentions) 
+
+#grid.table(freqtransfo_df,cols = colnames(freqtransfo_df))
+knitr::kable(freqtransfo_df,format = "html",table.attr = "style='width:40%;'")
+par(mar=c(0,0,0,0))
+wordcloud(words = freqtransfo_df$outil,freq = freqtransfo_df$mentions,min.freq = 1,
+          random.order=FALSE, random.color = T,
+          colors=brewer.pal(8,"Dark2"),rot.per=0,fixed.asp = FALSE)
+```
+
+
+J'ai ici aussi amalgamé `postgres` et `postgis` 
+
+
+Encore pas mal de réponses à côté de la plaque (e.g. `ligne de commandes`, les noms des fonctions d'une bibliothèque etc.)
+
+
+**Outils que je ne connaissais pas** 
+
+- Circé, outil IGN pour changer les CRS  
+
+
+
+## Meilleurs outils pour **calculer, mesurer, enrichir** des données : 
+
+
+
+```{r cloud6,cache=TRUE,echo=FALSE,message=FALSE,warning=FALSE, fig.height=12, fig.width=12}
+enrichraw <-  "excel,Gimp,Gimp,SNAP,powerpoint,python,QGIS sentinel,OTB,QGIS sentinel,OTB,OTB,OTB,QGIS sentinel,QGIS sentinel,python,SNAP,Zonal Stats,SNAP,QGIS sentinel,OTB,SNAP,SNAP,excel,notepad++,QGIS,SNAP,sql,R,paint,sql,postgis,QGIS,postgis,python,postgis,QGIS,postgres,postgres,Pgrouting,R,python,QGIS,QGIS,python,postgis,postgis,QGIS,python,python,postgis,QGIS,QGIS,python,QGIS,QGIS,postgis"
+
+enrichraw <-  enrichraw %>%  str_split(",") %>% unlist()
+
+freqenrich  <-  enrichraw %>%  table(deparse.level = 0)
+freqenrich_df <- data.frame(outil = names(freqenrich),mentions=freqenrich[1:length(freqenrich)] %>%  as.vector())
+freqenrich_df <- arrange(freqenrich_df,-mentions) 
+
+#grid.table(freqenrich_df,cols = colnames(freqenrich_df))
+knitr::kable(freqenrich_df,format = "html",table.attr = "style='width:40%;'")
+par(mar=c(0,0,0,0))
+wordcloud(words = freqenrich_df$outil,freq = freqenrich_df$mentions,min.freq = 1,
+          random.order=FALSE, random.color = T,
+          colors=brewer.pal(8,"Dark2"),rot.per=0,fixed.asp = FALSE)
+```
+
+
+
+
+Comme l'année dernière , je suis surpris de voir `postgis` si haut : le confort du langage pl/SQL est tout de même assez limité pour coder des calculs un peu raffinés. 
+
+À noter : deux mentions de sous ensembles d'outils spécifiques de QGIS à la place de QGIS lui même : `Zonal Statistics` et `Field Calculator` par exemple. J'ai remplacé ces mentions par QGIS lui même. 
+
+J'ai laissé QGIS Sentinel à part , à cause de la thématique : il semble que ce soit un  plugin dédié aux images de Sentinel 2. Dans ce que je comprends de la doc , c'est uniquement pour **récupérer** des images et pas les traiter ou les enrichir , ce qui en ferait une réponse peu utile pour la question, mais abondamment mentionnée.
+
+La présence de `Gimp`, `Paint` et `powerpoint` est surprenante : il s'agissait en fait d'une méthode graphique sur un nuage de points pour en dessiner l'enveloppe convexe, vue pendant le cours d'évapotranspiration.
+
+
+
+
+## Meilleurs outils pour **exporter** et mettre à disposition des données
+
+```{r cloud7,cache=TRUE,echo=FALSE,message=FALSE,warning=FALSE, fig.height=12, fig.width=12}
+exportraw <- "Google Drive,wetransfer,Disque dur,QGIS,ftp,api,site web,cloud,Zip drive,QGIS,Dashboard arcgis,github,QGIS,site web,github,ligne de commandes,OneDrive,R,QGIS,arcgis,python (matplotlib),openstreetmap,formationTemp"
+
+exportraw <-  exportraw %>%  str_split(",") %>%  unlist()
+
+freqexport  <-  exportraw %>%  table(deparse.level = 0)
+freqexport_df <- data.frame(outil = names(freqexport),mentions=freqexport[1:length(freqexport)] %>%  as.vector())
+freqexport_df <- arrange(freqexport_df,-mentions) 
+
+#grid.table(freqexport_df,cols = colnames(freqexport_df))
+knitr::kable(freqexport_df,format = "html",table.attr = "style='width:40%;'")
+par(mar=c(0,0,0,0))
+wordcloud(words = freqexport_df$outil,freq = freqexport_df$mentions,min.freq = 1,
+          random.order=FALSE, random.color = T,
+          colors=brewer.pal(8,"Dark2"),rot.per=0,fixed.asp = FALSE)
+```
+
+
+Encore des réponses lunaires : `disque dur`, `lignes de commandes` ...
+
+Un nouvel outil : `Zip Drive` , service de stockage en ligne (https://www.zipdrive.com/)
+
+
+
+Cette année , les étudiant·e·s ont beaucoup plus cité les services de stockage en ligne (`oneDrive` `Google Drive` etc.) que l'année dernière. 
+
+
+
+
+
+## «Pile technique» SIG : **stocker, traiter et afficher/diffuser** des données spatiales, tout à la fois
+
+Question posée : «comment faire cohabiter les différents outils précédents pour afficher, traiter et stocker des données, dans un contexte ou vous avez la main sur tous les choix de technologie ? »
+
+Les réponses étant toutes uniques, inutile de faire un nuage de mots qui regroupe les similitudes.
+  
+  
+
+
+- SQlize : outil collaboratif d'édition de requête (en ligne)
+- docker : container pour encapsuler les outils voulus
+- postgres
+- Qgis - postgis
+- R
+- QGIS - python
+- MEAN : MongoDB, Express, React.js. Node.js 
+- Connexion bdd / qgis
+- Python + Qgis + Postgres
+- qgis - postgres
+- Php  
+- Angular - Spring boot - Postgres - Maptoolbox  
+- qgis - postgis
+- MAMP : MacOS-Apache( ou Nginx) -MyQSQL (ou MariaDB) -PHP (ou python ou perl)
+
+
+
+Malgré encore quelques réponses incomplètes ou hors sujet (e.g. PHP seul), on sent que les piles techniques sont mieux connues. Beaucoup de javascript apparaît alors que je ne crois pas que les IGAST aient des enseignement dans ce langage et les énormes framework qui l'accompagnent (e.g. node )
+
+
+
+
+**À noter**  : 
+
+- la dénomination de la "chose" (le serveur qui requête la BDD et présente les données aux frontend) à mettre entre les données et la page web n'était pas explicitement étiquetée "webserver" d'où certaines réponses incomplètes comme "web" , et la place flottante du javascript (ce qui se comprend, pour un langage "intermédiaire") .
+- À l'inverse de l'année dernière : quasiment pas de mention de librairie de cartographie !!! (e.g. openlayers)
+
+
+## Retour sur le cours "synthèses des outils vu au cours de l'année " lui-même.
+
+Les étudiant·e·s pensent qu'il ne faut pas partir des compétences et lister les outils pour en discuter , mais plutôt **partir des outils et des critères** 
+
+
+Par exemple :
+
+Un Outil $\rightarrow$ est-il connu de toute la promo ? $\rightarrow$ si au moins 50% connaît, dire à quoi ça sert  
+
+ou
+
+un Critère $\rightarrow$ pour quelle tâche est-ce important ? $\rightarrow$ quels outils remplissent ce critère ?  
+
+
+## Expression libre des étudiant·e·s
+
+
+
+### La mise à niveau / l'écart entre étudiant·e ENSG et extérieur·e 
+
+
+Il y a un écart entre les étudiant·e·s passés par l'ENSG et les autres, qui n'est pas comblé au cours de l'année.
+Cet écart n'est pas forcément de niveau, mais souvent. Ce qui pose la question de la mise à niveau qui pourrait réduire cet écart
+
+«L'UGE ne veut pas financer la mise à niveau » 
+
+«Il faudrait envoyer un récapitulatif des modules qu'ont fait les étudiant·e·s de l'"ENSG pour savoir »
+
+«A défaut de mise à niveau avec des enseigneant·e·s ou des tueur·ice·s , des cours de mise à niveau pourraient être rendus disponibles sur Moodle»
+
+«Le cours de python d'openclassroom est insuffisant pour l'ENSG»
+
+
+### Divers 
+
+«le cours de SQL est vraiment difficile, lui aussi on devrait en proposer une mise à niveau»
+
+
+«La marche est haute en traitement du signal et coordonnées sphériques pour quelqu'un qui n'aurait pas un parcours scientifique.»
+
+
+«Les environnements python c'est toujours problématiques, et ça change d'un projet à l'autre , d'un cours à l'autre, c'est très long à gérer. Par exemple on ne peut pas faire cohabiter `pip` et `conda` » 
+
+*Cette remarque est particulièrement pertinente à mon sens  : faire face aux soucis de version des paquets , de librairies et d'environnement qui les supportent, c'est vraiment pas facile, et il suffit de s'arrêter un peu pour ne plus savoir faire très rapidement , et devoir se reformer longuement sans avoir le temps plus tard.* 
+
+
+«Il manque un projet de programmation web, les ING2 l'ont déjà fait, mais nous on a pas de cours pour faire du web, il faudrait un projet supervisé avec technologie libre pour apprendre »
+
+«ça passe vite les modules, on a pas assez de temps pour interprêter les résultats des méthodes qu'on apprend, le temps qu'on comprenne on est passé à autre chose»
+
+*Encore une remarque importante à mon sens, mais je n'ai pas réussi à déterminer de quelles méthodes l'étudiant parlait.*
+
+### Le mot de la fin de 2022 et 2023
+
+J'ai montré ce retour à la promo 2023, qui l'a repris à son tour, pensant qu'il devrait être à nouveau remonté, à l'identique :  
+
+
+
+<em>
+« La difficulté de ce master c'est l'hétérogénéité des provenances qui implique qu'on reprend les concepts les outils à la base et qu'on n'arrive pas suffisamment loin pour que ce soit vraiment pointu intéressant.
+
+par exemple : traitement d'image vu en ING2 avec python et en M2 IGAST , on refait des masques avec Octave ce qui est la base de la base , et on nous montre ce que font des fonctions de bases qu'on avait appelé de façon transparente en ING2
+
+Appréhension des nouveaux outils , ça fait un peu peur pour les Non-ENSG de la programmation et des mathématiques . 
+
+Il y a un froid quand on apprend qu'on va le faire en python.
+
+je suis étonné·e qu'il n'existe pas de mise a niveau python avant la rentrée , comme en PPMD  »
+ </em>
+
+
+
